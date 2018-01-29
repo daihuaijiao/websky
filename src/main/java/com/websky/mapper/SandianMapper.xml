@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.websky.mapper.SandianMapper" >
+  <resultMap id="BaseResultMap" type="com.websky.pojo.Sandian" >
+    <id column="itm_cd" property="itmCd" jdbcType="VARCHAR" />
+    <result column="kc_num" property="kcNum" jdbcType="INTEGER" />
+    <result column="kctz_day" property="kctzDay" jdbcType="INTEGER" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="mass" property="mass" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    itm_cd, kc_num, kctz_day, total, mass, price
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.websky.pojo.SandianExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sandian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sandian
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sandian
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.websky.pojo.SandianExample" >
+    delete from sandian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.websky.pojo.Sandian" >
+    insert into sandian (itm_cd, kc_num, kctz_day, 
+      total, mass, price)
+    values (#{itmCd,jdbcType=VARCHAR}, #{kcNum,jdbcType=INTEGER}, #{kctzDay,jdbcType=INTEGER}, 
+      #{total,jdbcType=DECIMAL}, #{mass,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.websky.pojo.Sandian" >
+    insert into sandian
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itmCd != null" >
+        itm_cd,
+      </if>
+      <if test="kcNum != null" >
+        kc_num,
+      </if>
+      <if test="kctzDay != null" >
+        kctz_day,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="mass != null" >
+        mass,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itmCd != null" >
+        #{itmCd,jdbcType=VARCHAR},
+      </if>
+      <if test="kcNum != null" >
+        #{kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="kctzDay != null" >
+        #{kctzDay,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="mass != null" >
+        #{mass,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.websky.pojo.SandianExample" resultType="java.lang.Integer" >
+    select count(*) from sandian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sandian
+    <set >
+      <if test="record.itmCd != null" >
+        itm_cd = #{record.itmCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kcNum != null" >
+        kc_num = #{record.kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.kctzDay != null" >
+        kctz_day = #{record.kctzDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.total != null" >
+        total = #{record.total,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mass != null" >
+        mass = #{record.mass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sandian
+    set itm_cd = #{record.itmCd,jdbcType=VARCHAR},
+      kc_num = #{record.kcNum,jdbcType=INTEGER},
+      kctz_day = #{record.kctzDay,jdbcType=INTEGER},
+      total = #{record.total,jdbcType=DECIMAL},
+      mass = #{record.mass,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.websky.pojo.Sandian" >
+    update sandian
+    <set >
+      <if test="kcNum != null" >
+        kc_num = #{kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="kctzDay != null" >
+        kctz_day = #{kctzDay,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="mass != null" >
+        mass = #{mass,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.websky.pojo.Sandian" >
+    update sandian
+    set kc_num = #{kcNum,jdbcType=INTEGER},
+      kctz_day = #{kctzDay,jdbcType=INTEGER},
+      total = #{total,jdbcType=DECIMAL},
+      mass = #{mass,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL}
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+  </update>
+</mapper>
