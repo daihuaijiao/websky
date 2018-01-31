@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.websky.mapper.KucunbianhuaMapper" >
+  <resultMap id="BaseResultMap" type="com.websky.pojo.Kucunbianhua" >
+    <id column="itm_cd" property="itmCd" jdbcType="VARCHAR" />
+    <id column="date" property="date" jdbcType="BIGINT" />
+    <result column="kc_num" property="kcNum" jdbcType="INTEGER" />
+    <result column="rk_num" property="rkNum" jdbcType="INTEGER" />
+    <result column="ck_num" property="ckNum" jdbcType="INTEGER" />
+    <result column="zk_num" property="zkNum" jdbcType="INTEGER" />
+    <result column="temp" property="temp" jdbcType="INTEGER" />
+    <result column="kctz_day" property="kctzDay" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    itm_cd, date, kc_num, rk_num, ck_num, zk_num, temp, kctz_day
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.websky.pojo.KucunbianhuaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kucunbianhua
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="groupByClause != null" >
+    	group by ${groupByClause}
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.websky.pojo.KucunbianhuaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from kucunbianhua
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+      and date = #{date,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.websky.pojo.KucunbianhuaKey" >
+    delete from kucunbianhua
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+      and date = #{date,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.websky.pojo.KucunbianhuaExample" >
+    delete from kucunbianhua
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.websky.pojo.Kucunbianhua" >
+    insert into kucunbianhua (itm_cd, date, kc_num, 
+      rk_num, ck_num, zk_num, 
+      temp, kctz_day)
+    values (#{itmCd,jdbcType=VARCHAR}, #{date,jdbcType=BIGINT}, #{kcNum,jdbcType=INTEGER}, 
+      #{rkNum,jdbcType=INTEGER}, #{ckNum,jdbcType=INTEGER}, #{zkNum,jdbcType=INTEGER}, 
+      #{temp,jdbcType=INTEGER}, #{kctzDay,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.websky.pojo.Kucunbianhua" >
+    insert into kucunbianhua
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itmCd != null" >
+        itm_cd,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="kcNum != null" >
+        kc_num,
+      </if>
+      <if test="rkNum != null" >
+        rk_num,
+      </if>
+      <if test="ckNum != null" >
+        ck_num,
+      </if>
+      <if test="zkNum != null" >
+        zk_num,
+      </if>
+      <if test="temp != null" >
+        temp,
+      </if>
+      <if test="kctzDay != null" >
+        kctz_day,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itmCd != null" >
+        #{itmCd,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=BIGINT},
+      </if>
+      <if test="kcNum != null" >
+        #{kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="rkNum != null" >
+        #{rkNum,jdbcType=INTEGER},
+      </if>
+      <if test="ckNum != null" >
+        #{ckNum,jdbcType=INTEGER},
+      </if>
+      <if test="zkNum != null" >
+        #{zkNum,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null" >
+        #{temp,jdbcType=INTEGER},
+      </if>
+      <if test="kctzDay != null" >
+        #{kctzDay,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.websky.pojo.KucunbianhuaExample" resultType="java.lang.Integer" >
+    select count(*) from kucunbianhua
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kucunbianhua
+    <set >
+      <if test="record.itmCd != null" >
+        itm_cd = #{record.itmCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=BIGINT},
+      </if>
+      <if test="record.kcNum != null" >
+        kc_num = #{record.kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.rkNum != null" >
+        rk_num = #{record.rkNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.ckNum != null" >
+        ck_num = #{record.ckNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.zkNum != null" >
+        zk_num = #{record.zkNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.temp != null" >
+        temp = #{record.temp,jdbcType=INTEGER},
+      </if>
+      <if test="record.kctzDay != null" >
+        kctz_day = #{record.kctzDay,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kucunbianhua
+    set itm_cd = #{record.itmCd,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=BIGINT},
+      kc_num = #{record.kcNum,jdbcType=INTEGER},
+      rk_num = #{record.rkNum,jdbcType=INTEGER},
+      ck_num = #{record.ckNum,jdbcType=INTEGER},
+      zk_num = #{record.zkNum,jdbcType=INTEGER},
+      temp = #{record.temp,jdbcType=INTEGER},
+      kctz_day = #{record.kctzDay,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.websky.pojo.Kucunbianhua" >
+    update kucunbianhua
+    <set >
+      <if test="kcNum != null" >
+        kc_num = #{kcNum,jdbcType=INTEGER},
+      </if>
+      <if test="rkNum != null" >
+        rk_num = #{rkNum,jdbcType=INTEGER},
+      </if>
+      <if test="ckNum != null" >
+        ck_num = #{ckNum,jdbcType=INTEGER},
+      </if>
+      <if test="zkNum != null" >
+        zk_num = #{zkNum,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null" >
+        temp = #{temp,jdbcType=INTEGER},
+      </if>
+      <if test="kctzDay != null" >
+        kctz_day = #{kctzDay,jdbcType=INTEGER},
+      </if>
+    </set>
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+      and date = #{date,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.websky.pojo.Kucunbianhua" >
+    update kucunbianhua
+    set kc_num = #{kcNum,jdbcType=INTEGER},
+      rk_num = #{rkNum,jdbcType=INTEGER},
+      ck_num = #{ckNum,jdbcType=INTEGER},
+      zk_num = #{zkNum,jdbcType=INTEGER},
+      temp = #{temp,jdbcType=INTEGER},
+      kctz_day = #{kctzDay,jdbcType=INTEGER}
+    where itm_cd = #{itmCd,jdbcType=VARCHAR}
+      and date = #{date,jdbcType=BIGINT}
+  </update>
+</mapper>

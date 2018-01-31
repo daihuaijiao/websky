@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.websky.mapper.SvrMsgTblMapper" >
+  <resultMap id="BaseResultMap" type="com.websky.pojo.SvrMsgTbl" >
+    <result column="BUS_SEC_CD" property="busSecCd" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SEQ" property="svrMsgSeq" jdbcType="INTEGER" />
+    <result column="SVR_PRG_NM" property="svrPrgNm" jdbcType="VARCHAR" />
+    <result column="SVR_USR_ID" property="svrUsrId" jdbcType="VARCHAR" />
+    <result column="SVR_START_TIME" property="svrStartTime" jdbcType="TIMESTAMP" />
+    <result column="SVR_END_TIME" property="svrEndTime" jdbcType="TIMESTAMP" />
+    <result column="SVR_RETURN_CD" property="svrReturnCd" jdbcType="VARCHAR" />
+    <result column="SVR_NUM_NML" property="svrNumNml" jdbcType="INTEGER" />
+    <result column="SVR_NUM_ABNML" property="svrNumAbnml" jdbcType="INTEGER" />
+    <result column="SVR_HNDI_MSG" property="svrHndiMsg" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_DT1" property="svrMsgSpareDt1" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_DT2" property="svrMsgSpareDt2" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_DT3" property="svrMsgSpareDt3" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_DT4" property="svrMsgSpareDt4" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_DT5" property="svrMsgSpareDt5" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TM1" property="svrMsgSpareTm1" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TM2" property="svrMsgSpareTm2" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TM3" property="svrMsgSpareTm3" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TM4" property="svrMsgSpareTm4" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TM5" property="svrMsgSpareTm5" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_NUM1" property="svrMsgSpareNum1" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_NUM2" property="svrMsgSpareNum2" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_NUM3" property="svrMsgSpareNum3" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_NUM4" property="svrMsgSpareNum4" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_NUM5" property="svrMsgSpareNum5" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TYP1" property="svrMsgSpareTyp1" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TYP2" property="svrMsgSpareTyp2" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TYP3" property="svrMsgSpareTyp3" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TYP4" property="svrMsgSpareTyp4" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_TYP5" property="svrMsgSpareTyp5" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CD1" property="svrMsgSpareCd1" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CD2" property="svrMsgSpareCd2" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CD3" property="svrMsgSpareCd3" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CD4" property="svrMsgSpareCd4" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CD5" property="svrMsgSpareCd5" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CONT1" property="svrMsgSpareCont1" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CONT2" property="svrMsgSpareCont2" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CONT3" property="svrMsgSpareCont3" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CONT4" property="svrMsgSpareCont4" jdbcType="VARCHAR" />
+    <result column="SVR_MSG_SPARE_CONT5" property="svrMsgSpareCont5" jdbcType="VARCHAR" />
+    <result column="EXCLUSIVE_KEY" property="exclusiveKey" jdbcType="DECIMAL" />
+    <result column="ENTRY_TIME" property="entryTime" jdbcType="VARCHAR" />
+    <result column="LAST_UPD_TIME" property="lastUpdTime" jdbcType="VARCHAR" />
+    <result column="LAST_UPD_PRG" property="lastUpdPrg" jdbcType="VARCHAR" />
+    <result column="LAST_UPD_USR" property="lastUpdUsr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    BUS_SEC_CD, SVR_MSG_SEQ, SVR_PRG_NM, SVR_USR_ID, SVR_START_TIME, SVR_END_TIME, SVR_RETURN_CD, 
+    SVR_NUM_NML, SVR_NUM_ABNML, SVR_HNDI_MSG, SVR_MSG_SPARE_DT1, SVR_MSG_SPARE_DT2, SVR_MSG_SPARE_DT3, 
+    SVR_MSG_SPARE_DT4, SVR_MSG_SPARE_DT5, SVR_MSG_SPARE_TM1, SVR_MSG_SPARE_TM2, SVR_MSG_SPARE_TM3, 
+    SVR_MSG_SPARE_TM4, SVR_MSG_SPARE_TM5, SVR_MSG_SPARE_NUM1, SVR_MSG_SPARE_NUM2, SVR_MSG_SPARE_NUM3, 
+    SVR_MSG_SPARE_NUM4, SVR_MSG_SPARE_NUM5, SVR_MSG_SPARE_TYP1, SVR_MSG_SPARE_TYP2, SVR_MSG_SPARE_TYP3, 
+    SVR_MSG_SPARE_TYP4, SVR_MSG_SPARE_TYP5, SVR_MSG_SPARE_CD1, SVR_MSG_SPARE_CD2, SVR_MSG_SPARE_CD3, 
+    SVR_MSG_SPARE_CD4, SVR_MSG_SPARE_CD5, SVR_MSG_SPARE_CONT1, SVR_MSG_SPARE_CONT2, SVR_MSG_SPARE_CONT3, 
+    SVR_MSG_SPARE_CONT4, SVR_MSG_SPARE_CONT5, EXCLUSIVE_KEY, ENTRY_TIME, LAST_UPD_TIME, 
+    LAST_UPD_PRG, LAST_UPD_USR
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.websky.pojo.SvrMsgTblExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from svr_msg_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.websky.pojo.SvrMsgTblExample" >
+    delete from svr_msg_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.websky.pojo.SvrMsgTbl" >
+    insert into svr_msg_tbl (BUS_SEC_CD, SVR_MSG_SEQ, SVR_PRG_NM, 
+      SVR_USR_ID, SVR_START_TIME, SVR_END_TIME, 
+      SVR_RETURN_CD, SVR_NUM_NML, SVR_NUM_ABNML, 
+      SVR_HNDI_MSG, SVR_MSG_SPARE_DT1, SVR_MSG_SPARE_DT2, 
+      SVR_MSG_SPARE_DT3, SVR_MSG_SPARE_DT4, SVR_MSG_SPARE_DT5, 
+      SVR_MSG_SPARE_TM1, SVR_MSG_SPARE_TM2, SVR_MSG_SPARE_TM3, 
+      SVR_MSG_SPARE_TM4, SVR_MSG_SPARE_TM5, SVR_MSG_SPARE_NUM1, 
+      SVR_MSG_SPARE_NUM2, SVR_MSG_SPARE_NUM3, SVR_MSG_SPARE_NUM4, 
+      SVR_MSG_SPARE_NUM5, SVR_MSG_SPARE_TYP1, SVR_MSG_SPARE_TYP2, 
+      SVR_MSG_SPARE_TYP3, SVR_MSG_SPARE_TYP4, SVR_MSG_SPARE_TYP5, 
+      SVR_MSG_SPARE_CD1, SVR_MSG_SPARE_CD2, SVR_MSG_SPARE_CD3, 
+      SVR_MSG_SPARE_CD4, SVR_MSG_SPARE_CD5, SVR_MSG_SPARE_CONT1, 
+      SVR_MSG_SPARE_CONT2, SVR_MSG_SPARE_CONT3, SVR_MSG_SPARE_CONT4, 
+      SVR_MSG_SPARE_CONT5, EXCLUSIVE_KEY, ENTRY_TIME, 
+      LAST_UPD_TIME, LAST_UPD_PRG, LAST_UPD_USR
+      )
+    values (#{busSecCd,jdbcType=VARCHAR}, #{svrMsgSeq,jdbcType=INTEGER}, #{svrPrgNm,jdbcType=VARCHAR}, 
+      #{svrUsrId,jdbcType=VARCHAR}, #{svrStartTime,jdbcType=TIMESTAMP}, #{svrEndTime,jdbcType=TIMESTAMP}, 
+      #{svrReturnCd,jdbcType=VARCHAR}, #{svrNumNml,jdbcType=INTEGER}, #{svrNumAbnml,jdbcType=INTEGER}, 
+      #{svrHndiMsg,jdbcType=VARCHAR}, #{svrMsgSpareDt1,jdbcType=VARCHAR}, #{svrMsgSpareDt2,jdbcType=VARCHAR}, 
+      #{svrMsgSpareDt3,jdbcType=VARCHAR}, #{svrMsgSpareDt4,jdbcType=VARCHAR}, #{svrMsgSpareDt5,jdbcType=VARCHAR}, 
+      #{svrMsgSpareTm1,jdbcType=VARCHAR}, #{svrMsgSpareTm2,jdbcType=VARCHAR}, #{svrMsgSpareTm3,jdbcType=VARCHAR}, 
+      #{svrMsgSpareTm4,jdbcType=VARCHAR}, #{svrMsgSpareTm5,jdbcType=VARCHAR}, #{svrMsgSpareNum1,jdbcType=VARCHAR}, 
+      #{svrMsgSpareNum2,jdbcType=VARCHAR}, #{svrMsgSpareNum3,jdbcType=VARCHAR}, #{svrMsgSpareNum4,jdbcType=VARCHAR}, 
+      #{svrMsgSpareNum5,jdbcType=VARCHAR}, #{svrMsgSpareTyp1,jdbcType=VARCHAR}, #{svrMsgSpareTyp2,jdbcType=VARCHAR}, 
+      #{svrMsgSpareTyp3,jdbcType=VARCHAR}, #{svrMsgSpareTyp4,jdbcType=VARCHAR}, #{svrMsgSpareTyp5,jdbcType=VARCHAR}, 
+      #{svrMsgSpareCd1,jdbcType=VARCHAR}, #{svrMsgSpareCd2,jdbcType=VARCHAR}, #{svrMsgSpareCd3,jdbcType=VARCHAR}, 
+      #{svrMsgSpareCd4,jdbcType=VARCHAR}, #{svrMsgSpareCd5,jdbcType=VARCHAR}, #{svrMsgSpareCont1,jdbcType=VARCHAR}, 
+      #{svrMsgSpareCont2,jdbcType=VARCHAR}, #{svrMsgSpareCont3,jdbcType=VARCHAR}, #{svrMsgSpareCont4,jdbcType=VARCHAR}, 
+      #{svrMsgSpareCont5,jdbcType=VARCHAR}, #{exclusiveKey,jdbcType=DECIMAL}, #{entryTime,jdbcType=VARCHAR}, 
+      #{lastUpdTime,jdbcType=VARCHAR}, #{lastUpdPrg,jdbcType=VARCHAR}, #{lastUpdUsr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.websky.pojo.SvrMsgTbl" >
+    insert into svr_msg_tbl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="busSecCd != null" >
+        BUS_SEC_CD,
+      </if>
+      <if test="svrMsgSeq != null" >
+        SVR_MSG_SEQ,
+      </if>
+      <if test="svrPrgNm != null" >
+        SVR_PRG_NM,
+      </if>
+      <if test="svrUsrId != null" >
+        SVR_USR_ID,
+      </if>
+      <if test="svrStartTime != null" >
+        SVR_START_TIME,
+      </if>
+      <if test="svrEndTime != null" >
+        SVR_END_TIME,
+      </if>
+      <if test="svrReturnCd != null" >
+        SVR_RETURN_CD,
+      </if>
+      <if test="svrNumNml != null" >
+        SVR_NUM_NML,
+      </if>
+      <if test="svrNumAbnml != null" >
+        SVR_NUM_ABNML,
+      </if>
+      <if test="svrHndiMsg != null" >
+        SVR_HNDI_MSG,
+      </if>
+      <if test="svrMsgSpareDt1 != null" >
+        SVR_MSG_SPARE_DT1,
+      </if>
+      <if test="svrMsgSpareDt2 != null" >
+        SVR_MSG_SPARE_DT2,
+      </if>
+      <if test="svrMsgSpareDt3 != null" >
+        SVR_MSG_SPARE_DT3,
+      </if>
+      <if test="svrMsgSpareDt4 != null" >
+        SVR_MSG_SPARE_DT4,
+      </if>
+      <if test="svrMsgSpareDt5 != null" >
+        SVR_MSG_SPARE_DT5,
+      </if>
+      <if test="svrMsgSpareTm1 != null" >
+        SVR_MSG_SPARE_TM1,
+      </if>
+      <if test="svrMsgSpareTm2 != null" >
+        SVR_MSG_SPARE_TM2,
+      </if>
+      <if test="svrMsgSpareTm3 != null" >
+        SVR_MSG_SPARE_TM3,
+      </if>
+      <if test="svrMsgSpareTm4 != null" >
+        SVR_MSG_SPARE_TM4,
+      </if>
+      <if test="svrMsgSpareTm5 != null" >
+        SVR_MSG_SPARE_TM5,
+      </if>
+      <if test="svrMsgSpareNum1 != null" >
+        SVR_MSG_SPARE_NUM1,
+      </if>
+      <if test="svrMsgSpareNum2 != null" >
+        SVR_MSG_SPARE_NUM2,
+      </if>
+      <if test="svrMsgSpareNum3 != null" >
+        SVR_MSG_SPARE_NUM3,
+      </if>
+      <if test="svrMsgSpareNum4 != null" >
+        SVR_MSG_SPARE_NUM4,
+      </if>
+      <if test="svrMsgSpareNum5 != null" >
+        SVR_MSG_SPARE_NUM5,
+      </if>
+      <if test="svrMsgSpareTyp1 != null" >
+        SVR_MSG_SPARE_TYP1,
+      </if>
+      <if test="svrMsgSpareTyp2 != null" >
+        SVR_MSG_SPARE_TYP2,
+      </if>
+      <if test="svrMsgSpareTyp3 != null" >
+        SVR_MSG_SPARE_TYP3,
+      </if>
+      <if test="svrMsgSpareTyp4 != null" >
+        SVR_MSG_SPARE_TYP4,
+      </if>
+      <if test="svrMsgSpareTyp5 != null" >
+        SVR_MSG_SPARE_TYP5,
+      </if>
+      <if test="svrMsgSpareCd1 != null" >
+        SVR_MSG_SPARE_CD1,
+      </if>
+      <if test="svrMsgSpareCd2 != null" >
+        SVR_MSG_SPARE_CD2,
+      </if>
+      <if test="svrMsgSpareCd3 != null" >
+        SVR_MSG_SPARE_CD3,
+      </if>
+      <if test="svrMsgSpareCd4 != null" >
+        SVR_MSG_SPARE_CD4,
+      </if>
+      <if test="svrMsgSpareCd5 != null" >
+        SVR_MSG_SPARE_CD5,
+      </if>
+      <if test="svrMsgSpareCont1 != null" >
+        SVR_MSG_SPARE_CONT1,
+      </if>
+      <if test="svrMsgSpareCont2 != null" >
+        SVR_MSG_SPARE_CONT2,
+      </if>
+      <if test="svrMsgSpareCont3 != null" >
+        SVR_MSG_SPARE_CONT3,
+      </if>
+      <if test="svrMsgSpareCont4 != null" >
+        SVR_MSG_SPARE_CONT4,
+      </if>
+      <if test="svrMsgSpareCont5 != null" >
+        SVR_MSG_SPARE_CONT5,
+      </if>
+      <if test="exclusiveKey != null" >
+        EXCLUSIVE_KEY,
+      </if>
+      <if test="entryTime != null" >
+        ENTRY_TIME,
+      </if>
+      <if test="lastUpdTime != null" >
+        LAST_UPD_TIME,
+      </if>
+      <if test="lastUpdPrg != null" >
+        LAST_UPD_PRG,
+      </if>
+      <if test="lastUpdUsr != null" >
+        LAST_UPD_USR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="busSecCd != null" >
+        #{busSecCd,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSeq != null" >
+        #{svrMsgSeq,jdbcType=INTEGER},
+      </if>
+      <if test="svrPrgNm != null" >
+        #{svrPrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="svrUsrId != null" >
+        #{svrUsrId,jdbcType=VARCHAR},
+      </if>
+      <if test="svrStartTime != null" >
+        #{svrStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="svrEndTime != null" >
+        #{svrEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="svrReturnCd != null" >
+        #{svrReturnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="svrNumNml != null" >
+        #{svrNumNml,jdbcType=INTEGER},
+      </if>
+      <if test="svrNumAbnml != null" >
+        #{svrNumAbnml,jdbcType=INTEGER},
+      </if>
+      <if test="svrHndiMsg != null" >
+        #{svrHndiMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareDt1 != null" >
+        #{svrMsgSpareDt1,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareDt2 != null" >
+        #{svrMsgSpareDt2,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareDt3 != null" >
+        #{svrMsgSpareDt3,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareDt4 != null" >
+        #{svrMsgSpareDt4,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareDt5 != null" >
+        #{svrMsgSpareDt5,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTm1 != null" >
+        #{svrMsgSpareTm1,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTm2 != null" >
+        #{svrMsgSpareTm2,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTm3 != null" >
+        #{svrMsgSpareTm3,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTm4 != null" >
+        #{svrMsgSpareTm4,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTm5 != null" >
+        #{svrMsgSpareTm5,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareNum1 != null" >
+        #{svrMsgSpareNum1,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareNum2 != null" >
+        #{svrMsgSpareNum2,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareNum3 != null" >
+        #{svrMsgSpareNum3,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareNum4 != null" >
+        #{svrMsgSpareNum4,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareNum5 != null" >
+        #{svrMsgSpareNum5,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTyp1 != null" >
+        #{svrMsgSpareTyp1,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTyp2 != null" >
+        #{svrMsgSpareTyp2,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTyp3 != null" >
+        #{svrMsgSpareTyp3,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTyp4 != null" >
+        #{svrMsgSpareTyp4,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareTyp5 != null" >
+        #{svrMsgSpareTyp5,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCd1 != null" >
+        #{svrMsgSpareCd1,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCd2 != null" >
+        #{svrMsgSpareCd2,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCd3 != null" >
+        #{svrMsgSpareCd3,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCd4 != null" >
+        #{svrMsgSpareCd4,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCd5 != null" >
+        #{svrMsgSpareCd5,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCont1 != null" >
+        #{svrMsgSpareCont1,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCont2 != null" >
+        #{svrMsgSpareCont2,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCont3 != null" >
+        #{svrMsgSpareCont3,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCont4 != null" >
+        #{svrMsgSpareCont4,jdbcType=VARCHAR},
+      </if>
+      <if test="svrMsgSpareCont5 != null" >
+        #{svrMsgSpareCont5,jdbcType=VARCHAR},
+      </if>
+      <if test="exclusiveKey != null" >
+        #{exclusiveKey,jdbcType=DECIMAL},
+      </if>
+      <if test="entryTime != null" >
+        #{entryTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdTime != null" >
+        #{lastUpdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdPrg != null" >
+        #{lastUpdPrg,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdUsr != null" >
+        #{lastUpdUsr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.websky.pojo.SvrMsgTblExample" resultType="java.lang.Integer" >
+    select count(*) from svr_msg_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update svr_msg_tbl
+    <set >
+      <if test="record.busSecCd != null" >
+        BUS_SEC_CD = #{record.busSecCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSeq != null" >
+        SVR_MSG_SEQ = #{record.svrMsgSeq,jdbcType=INTEGER},
+      </if>
+      <if test="record.svrPrgNm != null" >
+        SVR_PRG_NM = #{record.svrPrgNm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrUsrId != null" >
+        SVR_USR_ID = #{record.svrUsrId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrStartTime != null" >
+        SVR_START_TIME = #{record.svrStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.svrEndTime != null" >
+        SVR_END_TIME = #{record.svrEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.svrReturnCd != null" >
+        SVR_RETURN_CD = #{record.svrReturnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrNumNml != null" >
+        SVR_NUM_NML = #{record.svrNumNml,jdbcType=INTEGER},
+      </if>
+      <if test="record.svrNumAbnml != null" >
+        SVR_NUM_ABNML = #{record.svrNumAbnml,jdbcType=INTEGER},
+      </if>
+      <if test="record.svrHndiMsg != null" >
+        SVR_HNDI_MSG = #{record.svrHndiMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareDt1 != null" >
+        SVR_MSG_SPARE_DT1 = #{record.svrMsgSpareDt1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareDt2 != null" >
+        SVR_MSG_SPARE_DT2 = #{record.svrMsgSpareDt2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareDt3 != null" >
+        SVR_MSG_SPARE_DT3 = #{record.svrMsgSpareDt3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareDt4 != null" >
+        SVR_MSG_SPARE_DT4 = #{record.svrMsgSpareDt4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareDt5 != null" >
+        SVR_MSG_SPARE_DT5 = #{record.svrMsgSpareDt5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTm1 != null" >
+        SVR_MSG_SPARE_TM1 = #{record.svrMsgSpareTm1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTm2 != null" >
+        SVR_MSG_SPARE_TM2 = #{record.svrMsgSpareTm2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTm3 != null" >
+        SVR_MSG_SPARE_TM3 = #{record.svrMsgSpareTm3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTm4 != null" >
+        SVR_MSG_SPARE_TM4 = #{record.svrMsgSpareTm4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTm5 != null" >
+        SVR_MSG_SPARE_TM5 = #{record.svrMsgSpareTm5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareNum1 != null" >
+        SVR_MSG_SPARE_NUM1 = #{record.svrMsgSpareNum1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareNum2 != null" >
+        SVR_MSG_SPARE_NUM2 = #{record.svrMsgSpareNum2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareNum3 != null" >
+        SVR_MSG_SPARE_NUM3 = #{record.svrMsgSpareNum3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareNum4 != null" >
+        SVR_MSG_SPARE_NUM4 = #{record.svrMsgSpareNum4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareNum5 != null" >
+        SVR_MSG_SPARE_NUM5 = #{record.svrMsgSpareNum5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTyp1 != null" >
+        SVR_MSG_SPARE_TYP1 = #{record.svrMsgSpareTyp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTyp2 != null" >
+        SVR_MSG_SPARE_TYP2 = #{record.svrMsgSpareTyp2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTyp3 != null" >
+        SVR_MSG_SPARE_TYP3 = #{record.svrMsgSpareTyp3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTyp4 != null" >
+        SVR_MSG_SPARE_TYP4 = #{record.svrMsgSpareTyp4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareTyp5 != null" >
+        SVR_MSG_SPARE_TYP5 = #{record.svrMsgSpareTyp5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCd1 != null" >
+        SVR_MSG_SPARE_CD1 = #{record.svrMsgSpareCd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCd2 != null" >
+        SVR_MSG_SPARE_CD2 = #{record.svrMsgSpareCd2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCd3 != null" >
+        SVR_MSG_SPARE_CD3 = #{record.svrMsgSpareCd3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCd4 != null" >
+        SVR_MSG_SPARE_CD4 = #{record.svrMsgSpareCd4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCd5 != null" >
+        SVR_MSG_SPARE_CD5 = #{record.svrMsgSpareCd5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCont1 != null" >
+        SVR_MSG_SPARE_CONT1 = #{record.svrMsgSpareCont1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCont2 != null" >
+        SVR_MSG_SPARE_CONT2 = #{record.svrMsgSpareCont2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCont3 != null" >
+        SVR_MSG_SPARE_CONT3 = #{record.svrMsgSpareCont3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCont4 != null" >
+        SVR_MSG_SPARE_CONT4 = #{record.svrMsgSpareCont4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svrMsgSpareCont5 != null" >
+        SVR_MSG_SPARE_CONT5 = #{record.svrMsgSpareCont5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exclusiveKey != null" >
+        EXCLUSIVE_KEY = #{record.exclusiveKey,jdbcType=DECIMAL},
+      </if>
+      <if test="record.entryTime != null" >
+        ENTRY_TIME = #{record.entryTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdTime != null" >
+        LAST_UPD_TIME = #{record.lastUpdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdPrg != null" >
+        LAST_UPD_PRG = #{record.lastUpdPrg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdUsr != null" >
+        LAST_UPD_USR = #{record.lastUpdUsr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update svr_msg_tbl
+    set BUS_SEC_CD = #{record.busSecCd,jdbcType=VARCHAR},
+      SVR_MSG_SEQ = #{record.svrMsgSeq,jdbcType=INTEGER},
+      SVR_PRG_NM = #{record.svrPrgNm,jdbcType=VARCHAR},
+      SVR_USR_ID = #{record.svrUsrId,jdbcType=VARCHAR},
+      SVR_START_TIME = #{record.svrStartTime,jdbcType=TIMESTAMP},
+      SVR_END_TIME = #{record.svrEndTime,jdbcType=TIMESTAMP},
+      SVR_RETURN_CD = #{record.svrReturnCd,jdbcType=VARCHAR},
+      SVR_NUM_NML = #{record.svrNumNml,jdbcType=INTEGER},
+      SVR_NUM_ABNML = #{record.svrNumAbnml,jdbcType=INTEGER},
+      SVR_HNDI_MSG = #{record.svrHndiMsg,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_DT1 = #{record.svrMsgSpareDt1,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_DT2 = #{record.svrMsgSpareDt2,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_DT3 = #{record.svrMsgSpareDt3,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_DT4 = #{record.svrMsgSpareDt4,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_DT5 = #{record.svrMsgSpareDt5,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TM1 = #{record.svrMsgSpareTm1,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TM2 = #{record.svrMsgSpareTm2,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TM3 = #{record.svrMsgSpareTm3,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TM4 = #{record.svrMsgSpareTm4,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TM5 = #{record.svrMsgSpareTm5,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_NUM1 = #{record.svrMsgSpareNum1,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_NUM2 = #{record.svrMsgSpareNum2,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_NUM3 = #{record.svrMsgSpareNum3,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_NUM4 = #{record.svrMsgSpareNum4,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_NUM5 = #{record.svrMsgSpareNum5,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TYP1 = #{record.svrMsgSpareTyp1,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TYP2 = #{record.svrMsgSpareTyp2,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TYP3 = #{record.svrMsgSpareTyp3,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TYP4 = #{record.svrMsgSpareTyp4,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_TYP5 = #{record.svrMsgSpareTyp5,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CD1 = #{record.svrMsgSpareCd1,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CD2 = #{record.svrMsgSpareCd2,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CD3 = #{record.svrMsgSpareCd3,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CD4 = #{record.svrMsgSpareCd4,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CD5 = #{record.svrMsgSpareCd5,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CONT1 = #{record.svrMsgSpareCont1,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CONT2 = #{record.svrMsgSpareCont2,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CONT3 = #{record.svrMsgSpareCont3,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CONT4 = #{record.svrMsgSpareCont4,jdbcType=VARCHAR},
+      SVR_MSG_SPARE_CONT5 = #{record.svrMsgSpareCont5,jdbcType=VARCHAR},
+      EXCLUSIVE_KEY = #{record.exclusiveKey,jdbcType=DECIMAL},
+      ENTRY_TIME = #{record.entryTime,jdbcType=VARCHAR},
+      LAST_UPD_TIME = #{record.lastUpdTime,jdbcType=VARCHAR},
+      LAST_UPD_PRG = #{record.lastUpdPrg,jdbcType=VARCHAR},
+      LAST_UPD_USR = #{record.lastUpdUsr,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
